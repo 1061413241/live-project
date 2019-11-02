@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="60dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/located"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="福州"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:textSize="25dp"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_popular"
+        android:layout_width="320dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:text="最受欢迎的商圈"
+        android:background="#CCCCFF"
+        android:textSize="24sp"/>
+
+    <Button
+        android:id="@+id/btn_cost"
+        android:layout_width="320dp"
+        android:layout_marginTop="20dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:text="各价位高性价比餐厅"
+        android:background="#FFCCCC"
+        android:textSize="24sp"/>
+
+    <Button
+        android:id="@+id/btn_gather"
+        android:layout_width="320dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:text="最佳美食聚集地"
+        android:background="#CCFFFF"
+        android:textSize="24sp"/>
+
+    <Button
+        android:id="@+id/btn_clothes"
+        android:layout_width="320dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:text="服饰类最佳商圈"
+        android:background="#FFFFCC"
+        android:textSize="24sp"/>
+
+
+    <!--<com.example.fuzhoumap.Utils.EchartView-->
+        <!--android:id="@+id/lineChart"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content">-->
+    <!--</com.example.fuzhoumap.Utils.EchartView>-->
+
+</LinearLayout>
