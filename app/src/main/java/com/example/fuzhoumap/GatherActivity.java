@@ -2,6 +2,7 @@ package com.example.fuzhoumap;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 public class GatherActivity extends AppCompatActivity {
 

@@ -6,12 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".PopularActivity">
 
-    <com.example.fuzhoumap.Utils.EchartView
-        android:id="@+id/popular"
+    <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_popular"/>
 
-    </com.example.fuzhoumap.Utils.EchartView>
+    <!--<com.example.fuzhoumap.Utils.EchartView-->
+        <!--android:id="@+id/popular"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content">-->
+        <!---->
+
+    <!--</com.example.fuzhoumap.Utils.EchartView>-->
 
 
 </LinearLayout>

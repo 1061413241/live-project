@@ -34,14 +34,14 @@ public class LessTwoHundredFragment extends Fragment implements View.OnClickList
         view = inflater.inflate(R.layout.fragment_less_two_hundred,container,false);
         mContext = view.getContext();
 
-        lineChart.setWebViewClient(new WebViewClient(){
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
-                //最好在h5页面加载完毕后再加载数据，防止html的标签还未加载完成，不能正常显示
-                refreshLineChart();
-            }
-        });
+//        lineChart.setWebViewClient(new WebViewClient(){
+//            @Override
+//            public void onPageFinished(WebView view, String url) {
+//                super.onPageFinished(view, url);
+//                //最好在h5页面加载完毕后再加载数据，防止html的标签还未加载完成，不能正常显示
+//                refreshLineChart();
+//            }
+//        });
 
         return view;
     }
@@ -51,13 +51,13 @@ public class LessTwoHundredFragment extends Fragment implements View.OnClickList
 
     }
 
-    private void refreshLineChart(){
-        Object[] x = new Object[]{
-                "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"
-        };
-        Object[] y = new Object[]{
-                2, 5, 9, 3, 1, 4, 8
-        };
-        lineChart.refreshEchartsWithOption(EchartOptionUtil.getLineChartOptions(x, y));
-    }
+//    private void refreshLineChart(){
+//        Object[] x = new Object[]{
+//                "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"
+//        };
+//        Object[] y = new Object[]{
+//                2, 5, 9, 3, 1, 4, 8
+//        };
+//        lineChart.refreshEchartsWithOption(EchartOptionUtil.getLineChartOptions(x, y));
+//    }
 }

@@ -1,6 +1,7 @@
 package com.example.fuzhoumap;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.Button;
 
 import com.example.fuzhoumap.Utils.EchartOptionUtil;
 import com.example.fuzhoumap.Utils.EchartView;
+import com.example.fuzhoumap.Utils.Main;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +27,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
+        new Thread(new Runnable(){
+            @Override
+            public void run() {
+                Main.deal();
+            }
+        }).start();
+
+
+
+
         btn_popular = findViewById(R.id.btn_popular);
         btn_popular.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         btn_cost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this,CostActivity.class);
                 Intent intent = new Intent(MainActivity.this,CostActivity.class);
                 startActivity(intent);
             }

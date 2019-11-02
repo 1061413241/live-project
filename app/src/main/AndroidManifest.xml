@@ -2,21 +2,29 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.fuzhoumap">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".CostActivity"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".TestActivity"></activity>
+        <activity android:name=".CostActivity"
+            android:label="各价位高性价比餐厅"/>
         <activity
             android:name=".BasicActivity"
             android:label="@string/title_activity_basic"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".GatherActivity" />
-        <activity android:name=".ClothesActivity" />
-        <activity android:name=".PopularActivity" />
+        <activity android:name=".GatherActivity"
+            android:label="最佳美食聚集地"/>
+        <activity android:name=".ClothesActivity"
+            android:label="服饰类最佳商圈"/>
+        <activity android:name=".PopularActivity"
+            android:label="最受欢迎商圈"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

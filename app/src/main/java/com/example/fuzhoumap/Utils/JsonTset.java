@@ -2,67 +2,74 @@ package com.example.fuzhoumap.Utils;
 
 import android.util.Log;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+public class JsonTset {
+
+    public List<BaiduResponse.Results> list = new ArrayList<>();
+
+    public ArrayList<BaiduResponse.Results> list0 = new ArrayList<BaiduResponse.Results>();
+    public ArrayList<BaiduResponse.Results> list1 = new ArrayList<BaiduResponse.Results>();
+    public ArrayList<BaiduResponse.Results> list2 = new ArrayList<BaiduResponse.Results>();
+    public ArrayList<BaiduResponse.Results> list3 = new ArrayList<BaiduResponse.Results>();
+
+    public static String readJsonFile(String fileName) {
+        String jsonStr = "";
+        try {
+            File jsonFile = new File(fileName);
+            FileReader fileReader = new FileReader(jsonFile);
+
+            Reader reader = new InputStreamReader(new FileInputStream(jsonFile),"utf-8");
+            int ch = 0;
+            StringBuffer sb = new StringBuffer();
+            while ((ch = reader.read()) != -1) {
+                sb.append((char) ch);
+            }
+            fileReader.close();
+            reader.close();
+            jsonStr = sb.toString();
+            return jsonStr;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
 
 
-public class jsonTest {
-	public static String readJsonFile(String fileName) {
-	    String jsonStr = "";
-	    try {
-	        File jsonFile = new File(fileName);
-	        FileReader fileReader = new FileReader(jsonFile);
 
-	        Reader reader = new InputStreamReader(new FileInputStream(jsonFile),"utf-8");
-	        int ch = 0;
-	        StringBuffer sb = new StringBuffer();
-	        while ((ch = reader.read()) != -1) {
-	            sb.append((char) ch);
-	        }
-	        fileReader.close();
-	        reader.close();
-	        jsonStr = sb.toString();
-	        return jsonStr;
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	        return null;
-	    }
+    public static void deal() {
 
-	}
+        new Thread(new Runnable(){
+            @Override
+            public void run() {
+                int count=0;
+                List<BaiduResponse.Results> list = new ArrayList<>();
+                //String data = "{\"website\":\"chinamobilesh\", \"create_time\":157360, \"basic_version\":{\"user_gender\": \"男\",\"user_searched_history_by_orgs\": [{\"org_self\": true,\"searched_date\": \"2017-11-07\",\"searched_org\": \"其他\"},{\"org_self\": false,\"searched_date\": \"2017-07-08\",\"searched_org\": \"线上消费分期\"}]}}";
+                //InterFace rel = new InterFace();
+                while(count<5) {
+                    String data = InterFace.deal(count);
+                    Log.d("JsonTest", "JsonTest:" +data);
 
-	
-
-	public static ArrayList<BaiduResponse.Results> deal() {
-		int count=0;
-		ArrayList<BaiduResponse.Results> list = new ArrayList<BaiduResponse.Results>();
-		//String data = "{\"website\":\"chinamobilesh\", \"create_time\":157360, \"basic_version\":{\"user_gender\": \"男\",\"user_searched_history_by_orgs\": [{\"org_self\": true,\"searched_date\": \"2017-11-07\",\"searched_org\": \"其他\"},{\"org_self\": false,\"searched_date\": \"2017-07-08\",\"searched_org\": \"线上消费分期\"}]}}";
-				//InterFace rel = new InterFace();
-		while(count<50) {
-			String data = InterFace.deal(count);
-
-//					Gson gson = new Gson();
-			Gson gson = new Gson();
+                    Gson gson = new Gson();
 //         将 json 转化 成 List泛型
-			java.lang.reflect.Type type = new TypeToken<BaiduResponse>() {
-			}.getType();
-			final BaiduResponse baiduResponse= gson.fromJson(data, type);
+                    java.lang.reflect.Type type = new TypeToken<BaiduResponse>() {}.getType();
+                    final BaiduResponse baiduResponse= gson.fromJson(data, type);
+                    list = baiduResponse.results;
 
 //                hisList = gson.fromJson(val, new TypeToken<List<History>>() {}.getType());
-			//BaiduResponse baiduresponse = gson.fromJson(data, BaiduResponse.class);
-			//	BaiduResponse.Results = gson.fromJson(data, new TypeToken<BaiduResponse[]>(){}.getType());
+                    //BaiduResponse baiduresponse = gson.fromJson(data, BaiduResponse.class);
+                    //	BaiduResponse.Results = gson.fromJson(data, new TypeToken<BaiduResponse[]>(){}.getType());
 
 
 //					JSONObject jsonObject1= new  JSONObject(data);
@@ -127,28 +134,28 @@ public class jsonTest {
 ////			        return -1;
 ////			    }
 ////		   });
-			ArrayList<BaiduResponse.Results> list0 = new ArrayList<BaiduResponse.Results>();
-			ArrayList<BaiduResponse.Results> list1 = new ArrayList<BaiduResponse.Results>();
-			ArrayList<BaiduResponse.Results> list2 = new ArrayList<BaiduResponse.Results>();
-			ArrayList<BaiduResponse.Results> list3 = new ArrayList<BaiduResponse.Results>();
+                    ArrayList<BaiduResponse.Results> list00 = new ArrayList<BaiduResponse.Results>();
+                    ArrayList<BaiduResponse.Results> list11 = new ArrayList<BaiduResponse.Results>();
+                    ArrayList<BaiduResponse.Results> list22 = new ArrayList<BaiduResponse.Results>();
+                    ArrayList<BaiduResponse.Results> list33 = new ArrayList<BaiduResponse.Results>();
 //
-				   for(BaiduResponse.Results item:list) {
-					   if(item.detail_info.price!=null) {
-						   if(Double.valueOf(item.detail_info.price)<=50.0) {
-							   list0.add(item);
-							   //if(list0.size()==5) break;
-						   }
-						   else if(Double.valueOf(item.detail_info.price)>50.0&&Double.valueOf(item.detail_info.price)<=100.0) {
-							   list1.add(item);
-						   }
-						   else if(Double.valueOf(item.detail_info.price)>100.0&&Double.valueOf(item.detail_info.price)<=200.0) {
-							   list2.add(item);
-						   }
-						   else if(Double.valueOf(item.detail_info.price)>200.0) {
-							   list3.add(item);
-						   }
-					   }
-				   }
+                    for(BaiduResponse.Results item:list) {
+                        if(item.detail_info.price!=null) {
+                            if(Double.valueOf(item.detail_info.price)<=50.0) {
+                                list00.add(item);
+                                //if(list0.size()==5) break;
+                            }
+                            else if(Double.valueOf(item.detail_info.price)>50.0&&Double.valueOf(item.detail_info.price)<=100.0) {
+                                list11.add(item);
+                            }
+                            else if(Double.valueOf(item.detail_info.price)>100.0&&Double.valueOf(item.detail_info.price)<=200.0) {
+                                list22.add(item);
+                            }
+                            else if(Double.valueOf(item.detail_info.price)>200.0) {
+                                list33.add(item);
+                            }
+                        }
+                    }
 //				   for(BaiduResponse.Results item:list0) {
 //					   System.out.println(item.name);
 //				   }
@@ -168,8 +175,12 @@ public class jsonTest {
 //
 //				   String jsonStr=gson.toJson(list);
 //			        JSONObject jsonObject2= new  JSONObject(jsonStr);
-		}
-		return list;
-	}		
-	
+                }
+
+            }
+        }).start();
+
+
+    }
+
 }
